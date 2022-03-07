@@ -1,47 +1,86 @@
-function nolasa (m1,m2,m3){
+function nolasa(m1, m2, m3) {
     const malas = document.getElementsByClassName("mala");//ievadītos ciparus rāmī sasaistīs ar funciju
-     m1 = parseFloat(mala1.value);
-     m2 = parseFloat(mala2.value);
-     m3 = parseFloat(mala3.value);
+    m1 = parseFloat(mala1.value);
+    m2 = parseFloat(mala2.value);
+    m3 = parseFloat(mala3.value);
 
-    if (m1 > 0 && m2 > 0 && m3>0){//ja 1., 2., 3., mala ir jābūt lielākam par 0
-        console.log({m1, m2, m3});
-        return{m1, m2, m3};
+    if (m1 > 0 && m2 > 0 && m3 > 0) {//ja 1., 2., 3., mala ir jābūt lielākam par 0
+        console.log({ m1, m2, m3 });
+        return { m1, m2, m3 };
 
-   } else {
-    console.log(false); //ja mazāks pa 0, tad neveidojas
-    return false
+    } else {
+        console.log(false); //ja mazāks pa 0, tad neveidojas
+        return false
+    }
 }
-}
 
-function perimetrs(m1,m2,m3){
+function perimetrs(m1, m2, m3) {
     const m = nolasa();
-    m1=m.m1; m2=m.m2; m3=m.m3;
-    console.log(m1,m2,m3);
-    const p = m1+m2+m3;//saskaita, lai izrēķinātu perimetru
+    m1 = m.m1; m2 = m.m2; m3 = m.m3;
+    console.log(m1, m2, m3);
+    const p = m1 + m2 + m3;//saskaita, lai izrēķinātu perimetru
     console.log(p);
-    return(p);
+    return (p);
 }
 
-function pusper(m1,m2,m3){
-    const pusper = perimetrs(m1+m2+m3)/2; //izrēķina pusperimetru
+function pusper(m1, m2, m3) {
+    const pusper = perimetrs(m1, m2, m3) / 2; //izrēķina pusperimetru
     console.log(pusper);
-    return(pusper);
+    return (pusper);
 }
 
-function laukums(m1,m2,m3){
-    const pusper = perimetrs(m1+m2+m3)/2; //izrēķina pusperimetru
-    let tlaukums = Math.sqrt(pusper* ((pusper-m1) * (pusper-m2) * (pusper-m3))); //Hērona formula
+function laukums(m1, m2, m3) {
+    const pusper = perimetrs(m1, m2, m3) / 2; //izrēķina pusperimetru
+    let tlaukums = Math.sqrt(pusper * ((pusper - m1) * (pusper - m2) * (pusper - m3))); //Hērona formula
     console.log(tlaukums);
     return tlaukums;
 }
 //Funkcija pārbauda vai divu malu summa ir lielāka par trešo malu
-function irTrijsturis(m1,m2,m3){
+function irTrijsturis(m1, m2, m3) {
     //pārbauda vai izpildās trijstūra nevienādīa
     //atgriež true vai false
-if (m1<m2+m3 && m2<m1+m3 && m3<m1+m2){
-    return true;
-}else{
-    return false;
+    if (m1 < m2 + m3 && m2 < m1 + m3 && m3 < m2 + m1) {
+        return true;
+    } else {
+        return false;
+    }
 }
+//izvada rezultātu
+function rezultats() {
+    const m = nolasa();
+    m1 = m.m1; m2 = m.m2; m3 = m.m3;
+    console.log(m1, m2, m3);
+    if (!nolasa()) {
+        t = "Nekorekti ievaddati, trijstūra malu vērtībām ir jābūt lielākām par 0";
+    } else {
+        if (irTrijsturis(m1, m2, m3) == false) {//Ja trijstūru malu garumi ir nepareizi(neizpildās iepriekšējā funkcija) tad trijstūris neeksistē
+            t = "Trijstūris neeksistē, jo jebkuru 2 malu garumu summai ir jābūt lielākai par trešo malu";
+        } else {
+            t = "Trijstūris ar malu garumiem " + m1 + ", " + m2 + " un " + m3 + " eksistē."
+            if (m1 == m2 && m2 == m3) {
+                t = "Tas ir vienādmalu trijstūris."
+
+            } else {
+                if (m1 = m2 || m2 == m3 || m1 == m3);
+                t += "Tas ir vienāsānu trijstūris.";
+            }
+        }
+        const p = perimetrs(m1, m2, m3);//iepriekš izrēķinātais perimetrs
+        const s = Math.round(laukums(m1, m2, m3) * 100) / 100;//2 zīmes aiz komata
+        t += " Perimetrs ir " + p + " un laukums ir " + s + ".";
+    }
+
+    console.log(t);//izvada tekstu
+    return t;
+}
+
+function izvadaTekstu() {
+    //jāizsauc funkciju rezultāts()
+    const teksts = rezultats();
+    //elementa ar Id "izvade" izvada tekstu
+    console.log(teksts);
+    const sakne = document.getElementById("izvade");
+    const raksti = document.createElement("p");
+    raksti.innerHTML = teksts;
+    sakne.appendChild(raksti);
 }
