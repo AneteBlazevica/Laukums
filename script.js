@@ -51,14 +51,14 @@ function rezultats(){ //izvada rezultātu
     m1=m.m1; m2=m.m2; m3=m.m3;
     console.log(m1,m2,m3);
     if (!nolasa()){
-        t = "Nekorekti ievaddati, trijstūra malu vērtībām ir jābūt lielākām par 0";
+        t = " Nekorekti ievaddati, trijstūra malu vērtībām ir jābūt lielākām par 0";
     } else {
         if (irTrijsturis(m1,m2,m3)==false){ //Ja trijstūru malu garumi ir nepareizi (neizpildās iepriekšējā funkcija) tad trijstūris neeksistē
-            t = "Trijstūris neeksistē, jo jebkuru 2 malu garumu summai ir jābūt lielākai par trešo malu";
+            t = " Trijstūris neeksistē, jo jebkuru 2 malu garumu summai ir jābūt lielākai par trešo malu";
         } else {
             t = "Trijstūris ar malu garumiem " + m1 + ", " + m2 + " un " + m3 + " eksistē."
             if (m1==m2 && m2==m3) {
-                t += "Tas ir vienādmalu trijstūris."
+                t += " Tas ir vienādmalu trijstūris."
 
             } else {
                 if (m1 == m2 || m2 == m3 || m1 == m3);{
