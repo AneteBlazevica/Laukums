@@ -62,7 +62,7 @@ function rezultats(){ //izvada rezultātu
 
             } else {
                 if (m1 == m2 || m2 == m3 || m1 == m3);{
-                t += "Tas ir vienāsānu trijstūris.";
+                t += " Tas ir vienādsānu trijstūris.";
             }
         }
         const p = perimetrs(m1,m2,m3); //iepriekš izrēķinātais perimetrs
